@@ -9,16 +9,20 @@
         :selected-files="selectedFiles"
         :select-a-file="selectAFile"
         :go-back-one-level="goBackOneLevel"
+        :accept-file-selection="acceptFileSelection"
       />
+      <FileList :accepted-files="acceptedFiles" />
     </div>
   </div>
 </template>
 
 <script>
 import ButtonContainer from '~/components/ButtonContainer'
+import FileList from '~/components/FileList'
 export default {
   components: {
     ButtonContainer,
+    FileList,
   },
   data() {
     return {
@@ -27,7 +31,7 @@ export default {
       selectedFolder: {},
       selectedFiles: [],
       folderHistory: [],
-      completedFileSelection: false,
+      acceptedFiles: [],
     }
   },
   beforeMount() {
@@ -95,6 +99,9 @@ export default {
     goBackOneLevel() {
       this.folderHistory.pop()
       this.selectedFolder = this.folderHistory[this.folderHistory.length - 1]
+    },
+    acceptFileSelection(selectedFiles) {
+      this.acceptedFiles = [...selectedFiles]
     },
   },
 }

@@ -23,7 +23,7 @@
         >
           <span><i class="fas fa-arrow-left"></i></span>
         </button>
-        {{ folderName ? folderName : 'REO Assignment Files' }}
+        {{ folderName ? folderName : 'Torstraße 145, 39481 Nürnberg' }}
       </div>
       <div>
         <button
@@ -63,6 +63,7 @@
           disabled:opacity-50
           disabled:bg-gray-100
         "
+        @click="acceptFileSelection(selectedFiles)"
       >
         {{ buttonText }}
       </button>
@@ -105,6 +106,11 @@ export default {
       default: () => {},
     },
     viewFolderStructure: {
+      type: Function,
+      required: true,
+      default: () => {},
+    },
+    acceptFileSelection: {
       type: Function,
       required: true,
       default: () => {},
