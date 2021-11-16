@@ -17,6 +17,7 @@
         :selected-files="selectedFiles"
         :select-a-file="selectAFile"
         :go-back-one-level="goBackOneLevel"
+        :view-folder-structure="viewFolderStructure"
       />
     </div>
   </div>

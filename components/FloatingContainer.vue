@@ -8,7 +8,7 @@
       bg-white
       shadow
       w-full
-      max-h-72
+      max-h-80
       flex flex-col
     "
   >
@@ -24,7 +24,10 @@
         {{ folderName ? folderName : 'REO Assignment Files' }}
       </div>
       <div>
-        <button class="hover:bg-gray-200 p-1 rounded-full">
+        <button
+          class="hover:bg-gray-200 p-1 rounded-full"
+          @click.prevent="viewFolderStructure(false)"
+        >
           <span><i class="fas fa-times"></i></span>
         </button>
       </div>
@@ -42,6 +45,25 @@
           :select-a-file="selectAFile"
         />
       </div>
+    </div>
+    <div class="flex justify-end p-2">
+      <button
+        :disabled="selectedFiles.length === 0"
+        class="
+          py-1
+          px-4
+          rounded
+          disabled:border disabled:border-gray-100
+          bg-blue-500
+          text-white
+          disabled:text-gray-400
+          disabled:cursor-not-allowed
+          disabled:opacity-50
+          disabled:bg-gray-100
+        "
+      >
+        {{ buttonText }}
+      </button>
     </div>
   </div>
 </template>
@@ -80,6 +102,11 @@ export default {
       required: true,
       default: () => {},
     },
+    viewFolderStructure: {
+      type: Function,
+      required: true,
+      default: () => {},
+    },
   },
   computed: {
     folders() {
@@ -90,6 +117,16 @@ export default {
     },
     folderName() {
       return this.selectedFolder.name ? this.selectedFolder.name : ''
+    },
+    // if selectedFiles is empty return 'Select Files, if selectedFiles is 1 return Select File
+    buttonText() {
+      if (this.selectedFiles.length === 0) {
+        return 'Select Files'
+      } else if (this.selectedFiles.length === 1) {
+        return 'Select File'
+      } else {
+        return `Select ${this.selectedFiles.length} Files`
+      }
     },
   },
 }

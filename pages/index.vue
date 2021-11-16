@@ -36,7 +36,15 @@ export default {
   methods: {
     // sets selectFile to state
     viewFolderStructure(state) {
-      this.folderStructureViewed = state
+      if (state) {
+        this.folderStructureViewed = true
+      } else {
+        this.folderStructureViewed = false
+        // data cleanup
+        this.selectedFolder = {}
+        this.selectedFiles = []
+        this.folderHistory = []
+      }
     },
     async GET_folderStructure() {
       // GET folder structure
