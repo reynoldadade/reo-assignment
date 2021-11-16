@@ -41,10 +41,9 @@ export default {
         const response = await this.$axios.get(
           'https://api-dev.reo.so/api/folderStructure'
         )
-
-        console.log(response.data)
-      } catch (error) {
-        console.log(error)
+        return response.data
+      } catch ({ response }) {
+        return response.data
       }
     },
 
