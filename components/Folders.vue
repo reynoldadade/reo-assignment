@@ -4,7 +4,8 @@
       class="w-full p-1 text-left hover:bg-gray-200"
       @click="selectAFolder(folder)"
     >
-      <span class="p-1"><i class="far fa-folder"></i></span
+      <span class="p-1 bg-gray-100 rounded m-1"
+        ><i class="far fa-folder"></i></span
       ><span>{{ folder.name }}</span>
     </button>
   </div>

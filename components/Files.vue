@@ -5,7 +5,8 @@
       @click="selectAFile(file)"
     >
       <div>
-        <span class="p-1"><i class="far fa-file"></i></span
+        <span class="p-1 rounded bg-gray-100 m-1"
+          ><i class="far fa-file"></i></span
         ><span>{{ file.name }}</span>
       </div>
       <div>

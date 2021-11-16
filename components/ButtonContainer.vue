@@ -9,7 +9,7 @@
     <div
       v-if="folderStructureViewed"
       id="floating-container-wrapper"
-      class="absolute top-0 left-0 z-10 w-full h-72"
+      class="absolute top-0 left-0 z-10 w-full"
     >
       <FloatingContainer
         :selected-folder="selectedFolder"
