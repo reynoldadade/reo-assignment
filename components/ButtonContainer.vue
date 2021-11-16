@@ -9,9 +9,14 @@
     <div
       v-if="folderStructureViewed"
       id="floating-container-wrapper"
-      class="absolute top-0 left-0 z-10 w-full h-1/2"
+      class="absolute top-0 left-0 z-10 w-full h-72"
     >
-      <FloatingContainer :selected-folder="selectedFolder" />
+      <FloatingContainer
+        :selected-folder="selectedFolder"
+        :select-a-folder="selectAFolder"
+        :selected-files="selectedFiles"
+        :select-a-file="selectAFile"
+      />
     </div>
   </div>
 </template>
@@ -35,9 +40,18 @@ export default {
       type: Function,
       default: () => {},
     },
+    selectAFile: {
+      type: Function,
+      default: () => {},
+    },
     selectedFolder: {
       type: Object,
       default: () => {},
+    },
+    selectedFiles: {
+      type: Array,
+      required: false,
+      default: () => [],
     },
   },
 }

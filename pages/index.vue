@@ -73,8 +73,8 @@ export default {
         this.selectedFiles = [...this.selectedFiles, file]
       }
     },
-    //to go back one level
-    //find the
+    // to go back one level
+    // find the
     goBackOneLevel() {},
   },
 }

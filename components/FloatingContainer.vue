@@ -1,12 +1,21 @@
 <template>
   <div class="p-2 rounded-lg w-full h-full bg-white shadow">
+    <div class="p-2 font-semibold">
+      <span v-if="folderName" class="p-1"
+        ><i class="fas fa-arrow-left"></i></span
+      >{{ folderName }}
+    </div>
     <!-- loop through all available folders -->
     <div v-for="folder in folders" :key="folder.id">
-      <Folders :folder="folder" />
+      <Folders :folder="folder" :select-a-folder="selectAFolder" />
     </div>
     <!-- loop to find all files -->
     <div v-for="file in files" :key="file.id">
-      <Files :file="file" />
+      <Files
+        :file="file"
+        :selected-files="selectedFiles"
+        :select-a-file="selectAFile"
+      />
     </div>
   </div>
 </template>
@@ -25,6 +34,21 @@ export default {
       required: false,
       default: () => {},
     },
+    selectAFolder: {
+      type: Function,
+      required: true,
+      default: () => {},
+    },
+    selectedFiles: {
+      type: Array,
+      required: false,
+      default: () => [],
+    },
+    selectAFile: {
+      type: Function,
+      required: true,
+      default: () => {},
+    },
   },
   computed: {
     folders() {
@@ -32,6 +56,9 @@ export default {
     },
     files() {
       return this.selectedFolder.files
+    },
+    folderName() {
+      return this.selectedFolder.name ? this.selectedFolder.name : ''
     },
   },
 }
