@@ -1,15 +1,12 @@
 <template>
   <div id="container" class="w-screen h-screen border-2">
-    <div
-      class="
-        w-full
-        h-full
-        md:w-1/2 md:h-1/2
-        lg:w-1/3 lg:h-1/2
-        border-red-500 border-2
-      "
-    >
-      <ButtonContainer :select-a-file="selectAFile" :select-file="selectFile" />
+    <div class="w-full h-full md:w-1/2 md:h-1/2 lg:w-1/3 lg:h-1/2">
+      <ButtonContainer
+        :view-folder-structure="viewFolderStructure"
+        :folder-structure-viewed="folderStructureViewed"
+        :selected-folder="selectedFolder"
+        :select-a-folder="selectAFolder"
+      />
     </div>
   </div>
 </template>
@@ -22,18 +19,19 @@ export default {
   },
   data() {
     return {
-      selectFile: false,
+      folderStructureViewed: false,
       folderStructure: {},
+      selectedFolder: {},
     }
   },
   beforeMount() {
-    this.getFolderStrcuture()
+    this.getFolderStructure()
   },
   // create all methods here to enable this page become the only component that holds logic
   methods: {
     // sets selectFile to state
-    selectAFile(state) {
-      this.selectFile = state
+    viewFolderStructure(state) {
+      this.folderStructureViewed = state
     },
     async GET_folderStructure() {
       // GET folder structure
@@ -48,11 +46,15 @@ export default {
     },
 
     // use data recieved from api
-    async getFolderStrcuture() {
+    async getFolderStructure() {
       const response = await this.GET_folderStructure()
       if (response) {
         this.folderStructure = response
+        this.selectAFolder(response)
       }
+    },
+    selectAFolder(folder) {
+      this.selectedFolder = folder
     },
   },
 }

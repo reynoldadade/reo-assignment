@@ -1,9 +1,10 @@
 <template>
-  <div class="p-2 rounded-lg border-red bg-red-500 w-full h-full">
+  <div class="p-2 rounded-lg w-full h-full bg-white shadow">
     <!-- loop through all available folders -->
     <div v-for="folder in folders" :key="folder.id">
       <Folders :folder="folder" />
     </div>
+    <!-- loop to find all files -->
     <div v-for="file in files" :key="file.id">
       <Files :file="file" />
     </div>
@@ -19,15 +20,18 @@ export default {
     Folders,
   },
   props: {
-    folders: {
-      type: Array,
+    selectedFolder: {
+      type: Object,
       required: false,
-      default: () => [],
+      default: () => {},
     },
-    files: {
-      type: Array,
-      required: false,
-      default: () => [],
+  },
+  computed: {
+    folders() {
+      return this.selectedFolder.folders
+    },
+    files() {
+      return this.selectedFolder.files
     },
   },
 }
