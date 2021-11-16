@@ -3,13 +3,15 @@
     class="
       p-2
       rounded-lg
-      w-full
-      h-full
       bg-white
       shadow
       w-full
       max-h-80
       flex flex-col
+      absolute
+      top-0
+      left-0
+      z-10
     "
   >
     <div class="p-2 font-semibold flex justify-between">
@@ -113,15 +115,19 @@ export default {
       return this.selectedFolder.folders
     },
     files() {
-      return this.selectedFolder.files.filter(
-        (file) =>
-          file.mimeType === 'application/pdf' ||
-          file.mimeType === 'image/jpeg' ||
-          file.mimeType === 'image/png'
-      )
+      if (this.selectedFolder.files) {
+        return this.selectedFolder.files.filter(
+          (file) =>
+            file.mimeType === 'application/pdf' ||
+            file.mimeType === 'image/jpeg' ||
+            file.mimeType === 'image/png'
+        )
+      } else {
+        return this.selectedFolder.files
+      }
     },
     folderName() {
-      return this.selectedFolder.name ? this.selectedFolder.name : ''
+      return this.selectedFolder?.name ? this.selectedFolder.name : ''
     },
     // if selectedFiles is empty return 'Select Files, if selectedFiles is 1 return Select File
     buttonText() {

@@ -42,7 +42,7 @@ export default {
       } else {
         this.folderStructureViewed = false
         // data cleanup
-        this.selectedFolder = {}
+        this.selectedFolder = this.folderStructure
         this.selectedFiles = []
         this.folderHistory = []
       }

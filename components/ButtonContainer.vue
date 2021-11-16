@@ -6,11 +6,7 @@
     >
       Select Files
     </button>
-    <div
-      v-if="folderStructureViewed"
-      id="floating-container-wrapper"
-      class="absolute top-0 left-0 z-10 w-full"
-    >
+    <div v-if="folderStructureViewed" id="floating-container-wrapper">
       <FloatingContainer
         :selected-folder="selectedFolder"
         :select-a-folder="selectAFolder"
