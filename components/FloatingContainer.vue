@@ -113,7 +113,12 @@ export default {
       return this.selectedFolder.folders
     },
     files() {
-      return this.selectedFolder.files
+      return this.selectedFolder.files.filter(
+        (file) =>
+          file.mimeType === 'application/pdf' ||
+          file.mimeType === 'image/jpeg' ||
+          file.mimeType === 'image/png'
+      )
     },
     folderName() {
       return this.selectedFolder.name ? this.selectedFolder.name : ''
