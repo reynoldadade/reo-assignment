@@ -6,6 +6,8 @@
         :folder-structure-viewed="folderStructureViewed"
         :selected-folder="selectedFolder"
         :select-a-folder="selectAFolder"
+        :selected-files="selectedFiles"
+        :select-a-file="selectAFile"
       />
     </div>
   </div>
@@ -22,6 +24,7 @@ export default {
       folderStructureViewed: false,
       folderStructure: {},
       selectedFolder: {},
+      selectedFiles: [],
     }
   },
   beforeMount() {
@@ -53,9 +56,26 @@ export default {
         this.selectAFolder(response)
       }
     },
+    // event to select a folder on click
     selectAFolder(folder) {
       this.selectedFolder = folder
     },
+    // event to select a file but if file is already selected remove from list
+    selectAFile(file) {
+      const fileExists = this.selectedFiles.find(
+        (selectedFile) => selectedFile.id === file.id
+      )
+      if (fileExists) {
+        this.selectedFiles = this.selectedFiles.filter(
+          (selectedFile) => selectedFile.id !== file.id
+        )
+      } else {
+        this.selectedFiles = [...this.selectedFiles, file]
+      }
+    },
+    //to go back one level
+    //find the
+    goBackOneLevel() {},
   },
 }
 </script>
