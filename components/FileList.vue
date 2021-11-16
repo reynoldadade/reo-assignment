@@ -1,6 +1,11 @@
 <template>
-  <div class="p-2">
-    <div v-for="file in selectedFiles" :key="file.id">
+  <div class="p-2 w-full">
+    <div class="p-2">Files Selected</div>
+    <div
+      v-for="file in acceptedFiles"
+      :key="file.id"
+      class="text-gray-500 font-semibold border rounded bg-gray-100 p-2 m-1"
+    >
       {{ file.name }}
     </div>
   </div>
@@ -9,7 +14,7 @@
 <script>
 export default {
   props: {
-    selectedFiles: {
+    acceptedFiles: {
       type: Array,
       required: false,
       default: () => [],

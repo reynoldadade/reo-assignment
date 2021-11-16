@@ -1,7 +1,7 @@
 <template>
-  <div id="button-container" class="relative w-full h-full">
+  <div id="button-container" class="relative flex flex-col items-center">
     <button
-      class="rounded py-1 px-4 bg-blue-500 text-white flex-auto"
+      class="rounded py-1 px-4 bg-blue-500 text-white"
       @click.prevent="viewFolderStructure(true)"
     >
       Select Files
@@ -14,6 +14,7 @@
         :select-a-file="selectAFile"
         :go-back-one-level="goBackOneLevel"
         :view-folder-structure="viewFolderStructure"
+        :accept-file-selection="acceptFileSelection"
       />
     </div>
   </div>
@@ -52,6 +53,11 @@ export default {
       default: () => [],
     },
     goBackOneLevel: {
+      type: Function,
+      required: true,
+      default: () => {},
+    },
+    acceptFileSelection: {
       type: Function,
       required: true,
       default: () => {},

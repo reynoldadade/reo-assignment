@@ -1,6 +1,16 @@
 <template>
-  <div id="container" class="w-screen h-screen border-2">
-    <div class="w-full h-full md:w-1/2 md:h-1/2 lg:w-1/3 lg:h-1/2">
+  <div
+    id="container"
+    class="
+      w-screen
+      h-screen
+      border-2
+      flex
+      sm:justify-start
+      md:justify-center md:items-center
+    "
+  >
+    <div class="w-full md:w-2/3 lg:w-1/3">
       <ButtonContainer
         :view-folder-structure="viewFolderStructure"
         :folder-structure-viewed="folderStructureViewed"
@@ -11,7 +21,10 @@
         :go-back-one-level="goBackOneLevel"
         :accept-file-selection="acceptFileSelection"
       />
-      <FileList :accepted-files="acceptedFiles" />
+      <FileList
+        v-if="acceptedFiles.length > 0"
+        :accepted-files="acceptedFiles"
+      />
     </div>
   </div>
 </template>
@@ -100,8 +113,10 @@ export default {
       this.folderHistory.pop()
       this.selectedFolder = this.folderHistory[this.folderHistory.length - 1]
     },
+    // once user has selected files they can be accepted
     acceptFileSelection(selectedFiles) {
       this.acceptedFiles = [...selectedFiles]
+      this.folderStructureViewed = false
     },
   },
 }
