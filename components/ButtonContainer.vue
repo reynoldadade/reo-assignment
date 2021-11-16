@@ -16,6 +16,7 @@
         :select-a-folder="selectAFolder"
         :selected-files="selectedFiles"
         :select-a-file="selectAFile"
+        :go-back-one-level="goBackOneLevel"
       />
     </div>
   </div>
@@ -52,6 +53,11 @@ export default {
       type: Array,
       required: false,
       default: () => [],
+    },
+    goBackOneLevel: {
+      type: Function,
+      required: true,
+      default: () => {},
     },
   },
 }

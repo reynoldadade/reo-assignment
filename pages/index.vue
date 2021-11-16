@@ -8,6 +8,7 @@
         :select-a-folder="selectAFolder"
         :selected-files="selectedFiles"
         :select-a-file="selectAFile"
+        :go-back-one-level="goBackOneLevel"
       />
     </div>
   </div>
@@ -25,6 +26,7 @@ export default {
       folderStructure: {},
       selectedFolder: {},
       selectedFiles: [],
+      folderHistory: [],
     }
   },
   beforeMount() {
@@ -56,9 +58,15 @@ export default {
         this.selectAFolder(response)
       }
     },
-    // event to select a folder on click
+    // event to select a folder on click and then save that folder to history
     selectAFolder(folder) {
       this.selectedFolder = folder
+      this.folderHistory.push(folder)
+    },
+
+    // add folder to array of selected folders
+    setFolderHistory(folder) {
+      this.folderHistory = folder
     },
     // event to select a file but if file is already selected remove from list
     selectAFile(file) {
@@ -74,8 +82,11 @@ export default {
       }
     },
     // to go back one level
-    // find the
-    goBackOneLevel() {},
+    // history for the folders need to be tracked
+    goBackOneLevel() {
+      this.folderHistory.pop()
+      this.selectedFolder = this.folderHistory[this.folderHistory.length - 1]
+    },
   },
 }
 </script>

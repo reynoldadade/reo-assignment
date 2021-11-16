@@ -1,9 +1,10 @@
 <template>
   <div class="p-2 rounded-lg w-full h-full bg-white shadow">
     <div class="p-2 font-semibold">
-      <span v-if="folderName" class="p-1"
-        ><i class="fas fa-arrow-left"></i></span
-      >{{ folderName }}
+      <button v-if="folderName" class="p-1" @click="goBackOneLevel">
+        <span><i class="fas fa-arrow-left"></i></span>
+      </button>
+      {{ folderName }}
     </div>
     <!-- loop through all available folders -->
     <div v-for="folder in folders" :key="folder.id">
@@ -45,6 +46,11 @@ export default {
       default: () => [],
     },
     selectAFile: {
+      type: Function,
+      required: true,
+      default: () => {},
+    },
+    goBackOneLevel: {
       type: Function,
       required: true,
       default: () => {},
