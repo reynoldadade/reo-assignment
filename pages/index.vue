@@ -27,6 +27,7 @@ export default {
       selectedFolder: {},
       selectedFiles: [],
       folderHistory: [],
+      completedFileSelection: false,
     }
   },
   beforeMount() {
