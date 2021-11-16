@@ -1,6 +1,16 @@
 <template>
-  <div id="container" class="w-screen h-screen border-2">
-    <div class="w-full h-full md:w-1/2 md:h-1/2 lg:w-1/3 lg:h-1/2">
+  <div
+    id="container"
+    class="
+      w-screen
+      h-screen
+      border-2
+      flex
+      sm:justify-start
+      md:justify-center md:items-center
+    "
+  >
+    <div class="w-full md:w-2/3 lg:w-1/3">
       <ButtonContainer
         :view-folder-structure="viewFolderStructure"
         :folder-structure-viewed="folderStructureViewed"
@@ -8,6 +18,12 @@
         :select-a-folder="selectAFolder"
         :selected-files="selectedFiles"
         :select-a-file="selectAFile"
+        :go-back-one-level="goBackOneLevel"
+        :accept-file-selection="acceptFileSelection"
+      />
+      <FileList
+        v-if="acceptedFiles.length > 0"
+        :accepted-files="acceptedFiles"
       />
     </div>
   </div>
@@ -15,9 +31,11 @@
 
 <script>
 import ButtonContainer from '~/components/ButtonContainer'
+import FileList from '~/components/FileList'
 export default {
   components: {
     ButtonContainer,
+    FileList,
   },
   data() {
     return {
@@ -25,6 +43,8 @@ export default {
       folderStructure: {},
       selectedFolder: {},
       selectedFiles: [],
+      folderHistory: [],
+      acceptedFiles: [],
     }
   },
   beforeMount() {
@@ -34,7 +54,15 @@ export default {
   methods: {
     // sets selectFile to state
     viewFolderStructure(state) {
-      this.folderStructureViewed = state
+      if (state) {
+        this.folderStructureViewed = true
+      } else {
+        this.folderStructureViewed = false
+        // data cleanup
+        this.selectedFolder = this.folderStructure
+        this.selectedFiles = []
+        this.folderHistory = []
+      }
     },
     async GET_folderStructure() {
       // GET folder structure
@@ -56,9 +84,15 @@ export default {
         this.selectAFolder(response)
       }
     },
-    // event to select a folder on click
+    // event to select a folder on click and then save that folder to history
     selectAFolder(folder) {
       this.selectedFolder = folder
+      this.folderHistory.push(folder)
+    },
+
+    // add folder to array of selected folders
+    setFolderHistory(folder) {
+      this.folderHistory = folder
     },
     // event to select a file but if file is already selected remove from list
     selectAFile(file) {
@@ -74,8 +108,16 @@ export default {
       }
     },
     // to go back one level
-    // find the
-    goBackOneLevel() {},
+    // history for the folders need to be tracked
+    goBackOneLevel() {
+      this.folderHistory.pop()
+      this.selectedFolder = this.folderHistory[this.folderHistory.length - 1]
+    },
+    // once user has selected files they can be accepted
+    acceptFileSelection(selectedFiles) {
+      this.acceptedFiles = [...selectedFiles]
+      this.folderStructureViewed = false
+    },
   },
 }
 </script>

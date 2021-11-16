@@ -1,21 +1,72 @@
 <template>
-  <div class="p-2 rounded-lg w-full h-full bg-white shadow">
-    <div class="p-2 font-semibold">
-      <span v-if="folderName" class="p-1"
-        ><i class="fas fa-arrow-left"></i></span
-      >{{ folderName }}
+  <div
+    class="
+      p-2
+      rounded-lg
+      bg-white
+      shadow
+      w-full
+      max-h-80
+      flex flex-col
+      absolute
+      top-0
+      left-0
+      z-10
+    "
+  >
+    <div class="p-2 font-semibold flex justify-between">
+      <div>
+        <button
+          v-if="folderName"
+          class="p-1 hover:bg-gray-200 rounded-full"
+          @click="goBackOneLevel"
+        >
+          <span><i class="fas fa-arrow-left"></i></span>
+        </button>
+        {{ folderName ? folderName : 'Torstraße 145, 39481 Nürnberg' }}
+      </div>
+      <div>
+        <button
+          class="hover:bg-gray-200 p-1 rounded-full"
+          @click.prevent="viewFolderStructure(false)"
+        >
+          <span><i class="fas fa-times"></i></span>
+        </button>
+      </div>
     </div>
     <!-- loop through all available folders -->
-    <div v-for="folder in folders" :key="folder.id">
-      <Folders :folder="folder" :select-a-folder="selectAFolder" />
+    <div class="overflow-y-auto flex-grow">
+      <div v-for="folder in folders" :key="folder.id">
+        <Folders :folder="folder" :select-a-folder="selectAFolder" />
+      </div>
+      <!-- loop to find all files -->
+      <div v-for="file in files" :key="file.id">
+        <Files
+          :file="file"
+          :selected-files="selectedFiles"
+          :select-a-file="selectAFile"
+        />
+      </div>
     </div>
-    <!-- loop to find all files -->
-    <div v-for="file in files" :key="file.id">
-      <Files
-        :file="file"
-        :selected-files="selectedFiles"
-        :select-a-file="selectAFile"
-      />
+    <div class="flex justify-end p-2">
+      <button
+        :disabled="selectedFiles.length === 0"
+        class="
+          py-1
+          px-4
+          rounded
+          disabled:border disabled:border-gray-100
+          bg-blue-500
+          text-white
+          disabled:text-gray-400
+          disabled:cursor-not-allowed
+          disabled:opacity-50
+          disabled:bg-gray-100
+        "
+        @click="acceptFileSelection(selectedFiles)"
+      >
+        {{ buttonText }}
+      </button>
     </div>
   </div>
 </template>
@@ -49,16 +100,50 @@ export default {
       required: true,
       default: () => {},
     },
+    goBackOneLevel: {
+      type: Function,
+      required: true,
+      default: () => {},
+    },
+    viewFolderStructure: {
+      type: Function,
+      required: true,
+      default: () => {},
+    },
+    acceptFileSelection: {
+      type: Function,
+      required: true,
+      default: () => {},
+    },
   },
   computed: {
     folders() {
       return this.selectedFolder.folders
     },
     files() {
-      return this.selectedFolder.files
+      if (this.selectedFolder.files) {
+        return this.selectedFolder.files.filter(
+          (file) =>
+            file.mimeType === 'application/pdf' ||
+            file.mimeType === 'image/jpeg' ||
+            file.mimeType === 'image/png'
+        )
+      } else {
+        return this.selectedFolder.files
+      }
     },
     folderName() {
-      return this.selectedFolder.name ? this.selectedFolder.name : ''
+      return this.selectedFolder?.name ? this.selectedFolder.name : ''
+    },
+    // if selectedFiles is empty return 'Select Files, if selectedFiles is 1 return Select File
+    buttonText() {
+      if (this.selectedFiles.length === 0) {
+        return 'Select Files'
+      } else if (this.selectedFiles.length === 1) {
+        return 'Select File'
+      } else {
+        return `Select ${this.selectedFiles.length} Files`
+      }
     },
   },
 }

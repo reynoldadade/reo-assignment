@@ -4,9 +4,9 @@
       class="w-full p-1 justify-between flex hover:bg-gray-200"
       @click="selectAFile(file)"
     >
-      <div>
-        <span class="p-1"><i class="far fa-file"></i></span
-        ><span>{{ file.name }}</span>
+      <div class="w-full flex justify-start">
+        <IconThumbail :url="file.url" :mime-type="file.mimeType" />
+        <div class="p-1">{{ file.name }}</div>
       </div>
       <div>
         <span v-if="isFileSelected">
@@ -18,7 +18,11 @@
 </template>
 
 <script>
+import IconThumbail from '@/components/IconThumbail.vue'
 export default {
+  components: {
+    IconThumbail,
+  },
   props: {
     file: {
       type: Object,
