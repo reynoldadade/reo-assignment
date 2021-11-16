@@ -1,7 +1,14 @@
 <template>
-  <Tutorial/>
+  <div id="container" class="flex items-center justify-center">
+    <ButtonContainer />
+  </div>
 </template>
 
 <script>
-export default {}
+import ButtonContainer from '~/components/ButtonContainer'
+export default {
+  components: {
+    ButtonContainer,
+  },
+}
 </script>
