@@ -61,7 +61,7 @@ describe('Floating Container', () => {
         selectAFolder: jest.fn(),
         selectAFile: jest.fn(),
         goBackOneLevel: jest.fn(),
-        viewFolderStrcuture: jest.fn(),
+        viewFolderStructure: jest.fn(),
         acceptFileSelection: jest.fn(),
       },
     })

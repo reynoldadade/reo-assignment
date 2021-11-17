@@ -30,11 +30,8 @@ export default {
       switch (this.mimeType) {
         case 'application/pdf':
           return 'far fa-file-pdf'
-        case 'image/jpg':
-          return 'far fa-file-pdf'
-
         default:
-          return 'far far-file'
+          return 'far fa-file'
       }
     },
   },
