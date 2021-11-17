@@ -135,7 +135,7 @@ export default {
             file.mimeType === 'image/png'
         )
       } else {
-        return this.selectedFolder.files
+        return []
       }
     },
     folderName() {
