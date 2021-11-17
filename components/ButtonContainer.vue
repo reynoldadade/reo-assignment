@@ -1,7 +1,18 @@
 <template>
   <div id="button-container" class="relative flex flex-col items-center">
     <button
-      class="rounded py-1 px-4 bg-blue-500 text-white"
+      class="
+        rounded
+        py-1
+        px-4
+        bg-blue-500
+        text-white
+        disabled:text-gray-400
+        disabled:cursor-not-allowed
+        disabled:opacity-50
+        disabled:bg-gray-100
+      "
+      :disabled="!folderStructureLoaded"
       @click.prevent="viewFolderStructure(true)"
     >
       Select Files
@@ -62,6 +73,16 @@ export default {
       type: Function,
       required: true,
       default: () => {},
+    },
+    folderStructure: {
+      type: Object,
+      required: true,
+      default: () => {},
+    },
+  },
+  computed: {
+    folderStructureLoaded() {
+      return Object.keys(this.folderStructure).length > 0
     },
   },
 }
