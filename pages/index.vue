@@ -20,7 +20,7 @@
         :select-a-file="selectAFile"
         :go-back-one-level="goBackOneLevel"
         :accept-file-selection="acceptFileSelection"
-        :folder-structure="folderStructure"
+        :folder-structure-loaded="folderStructureLoaded"
       />
       <FileList
         v-if="acceptedFiles.length > 0"
@@ -47,6 +47,12 @@ export default {
       folderHistory: [],
       acceptedFiles: [],
     }
+  },
+
+  computed: {
+    folderStructureLoaded() {
+      return Object.keys(this.folderStructure).length > 0
+    },
   },
   beforeMount() {
     this.getFolderStructure()

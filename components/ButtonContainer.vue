@@ -74,15 +74,9 @@ export default {
       required: true,
       default: () => {},
     },
-    folderStructure: {
-      type: Object,
-      required: true,
-      default: () => {},
-    },
-  },
-  computed: {
-    folderStructureLoaded() {
-      return Object.keys(this.folderStructure).length > 0
+    folderStructureLoaded: {
+      type: Boolean,
+      default: false,
     },
   },
 }
