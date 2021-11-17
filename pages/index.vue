@@ -20,6 +20,7 @@
         :select-a-file="selectAFile"
         :go-back-one-level="goBackOneLevel"
         :accept-file-selection="acceptFileSelection"
+        :folder-structure="folderStructure"
       />
       <FileList
         v-if="acceptedFiles.length > 0"
