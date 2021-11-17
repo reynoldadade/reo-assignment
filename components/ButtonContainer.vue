@@ -6,7 +6,7 @@
     >
       Select Files
     </button>
-    <div v-if="folderStructureViewed" id="floating-container-wrapper">
+    <div id="floating-container-wrapper">
       <FloatingContainer
         :selected-folder="selectedFolder"
         :select-a-folder="selectAFolder"
@@ -15,6 +15,7 @@
         :go-back-one-level="goBackOneLevel"
         :view-folder-structure="viewFolderStructure"
         :accept-file-selection="acceptFileSelection"
+        :folder-structure-viewed="folderStructureViewed"
       />
     </div>
   </div>

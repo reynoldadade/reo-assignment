@@ -1,5 +1,6 @@
 <template>
   <div
+    v-if="folderStructureViewed"
     class="
       p-2
       rounded-lg
@@ -115,10 +116,15 @@ export default {
       required: true,
       default: () => {},
     },
+    folderStructureViewed: {
+      type: Boolean,
+      required: false,
+      default: false,
+    },
   },
   computed: {
     folders() {
-      return this.selectedFolder.folders
+      return this.selectedFolder?.folders
     },
     files() {
       if (this.selectedFolder.files) {
@@ -140,7 +146,7 @@ export default {
       if (this.selectedFiles.length === 0) {
         return 'Select Files'
       } else if (this.selectedFiles.length === 1) {
-        return 'Select File'
+        return 'Select 1 File'
       } else {
         return `Select ${this.selectedFiles.length} Files`
       }
