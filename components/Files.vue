@@ -18,7 +18,7 @@
 </template>
 
 <script>
-import IconThumbail from '@/components/IconThumbail.vue'
+import IconThumbail from '~/components/IconThumbnail.vue'
 export default {
   components: {
     IconThumbail,
