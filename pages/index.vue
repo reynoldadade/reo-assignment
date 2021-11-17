@@ -1,6 +1,6 @@
 <template>
   <div
-    id="container"
+    id="index-page"
     class="
       w-screen
       h-screen
@@ -72,7 +72,7 @@ export default {
         )
         return response.data
       } catch ({ response }) {
-        return response.data
+        return false
       }
     },
 
@@ -90,10 +90,6 @@ export default {
       this.folderHistory.push(folder)
     },
 
-    // add folder to array of selected folders
-    setFolderHistory(folder) {
-      this.folderHistory = folder
-    },
     // event to select a file but if file is already selected remove from list
     selectAFile(file) {
       const fileExists = this.selectedFiles.find(
