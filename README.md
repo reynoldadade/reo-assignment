@@ -15,6 +15,9 @@ $ npm run start
 
 # generate static project
 $ npm run generate
+
+# run tests
+$ npm run test
 ```
 
 For detailed explanation on how things work, check out the [documentation](https://nuxtjs.org).
@@ -31,16 +34,31 @@ More information about the usage of this directory in [the documentation](https:
 
 ### `components`
 
-The components directory contains your Vue.js components. Components make up the different parts of your page and can be reused and imported into your pages, layouts and even other components.
+#### `ButtonContainer`
 
-More information about the usage of this directory in [the documentation](https://nuxtjs.org/docs/2.x/directory-structure/components).
+Button Component used to trigger overlay
+
+#### `FileList`
+
+Display selected Files
+
+#### `Files`
+
+Show files in a folder
+
+#### `Folders`
+
+Show Folders in a folder
+
+#### `IconThumbnail`
+
+Component that returns an image thumbail for png,jpeg and a pdf-icon for application/pdf
 
 ### `layouts`
 
 Layouts are a great help when you want to change the look and feel of your Nuxt app, whether you want to include a sidebar or have distinct layouts for mobile and desktop.
 
 More information about the usage of this directory in [the documentation](https://nuxtjs.org/docs/2.x/directory-structure/layouts).
-
 
 ### `pages`
 
