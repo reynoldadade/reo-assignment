@@ -15,12 +15,11 @@
       z-10
     "
   >
-    <div class="p-2 font-semibold flex justify-between">
-      <div class="w-full">
+    <div class="font-semibold flex justify-between">
+      <div class="w-full p-1">
         <button
           v-if="folderName"
           class="
-            p-1
             hover:bg-hover-gray
             focus:bg-pressed-gray
             rounded-full
