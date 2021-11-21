@@ -124,3 +124,35 @@ export default {
   },
 }
 </script>
+
+<style>
+#floating-container {
+  max-height: 23.75rem;
+  width: 26.25rem;
+}
+
+#folders {
+  border-radius: 8px;
+  padding: 8px 0px 8px 8px;
+  height: 44px;
+}
+
+#files {
+  border-radius: 8px;
+  padding: 8px 0px 8px 8px;
+  height: 44px;
+}
+
+.icon {
+  position: absolute;
+  right: 13.25px;
+  top: 13.25px;
+  bottom: 13.25px;
+}
+
+.iconImg {
+  height: 28px;
+  width: 28px;
+  margin-right: 8px;
+}
+</style>

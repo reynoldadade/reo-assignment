@@ -8,8 +8,14 @@ module.exports = {
   ],
   darkMode: false, // or 'media' or 'class'
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        'hover-gray': 'rgba(0, 0, 0, 0.04)',
+        'pressed-gray': 'rgba(0, 0, 0, 0.08)',
+      },
+    },
   },
+
   variants: {
     extend: {
       opacity: ['responsive', 'hover', 'focus', 'disabled'],

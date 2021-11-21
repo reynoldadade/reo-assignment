@@ -1,18 +1,25 @@
 <template>
-  <div class="w-full p-2">
+  <div class="w-full">
     <button
-      class="w-full p-1 justify-between flex hover:bg-gray-200"
+      id="files"
+      class="
+        w-full
+        justify-between
+        flex
+        hover:bg-hover-gray
+        relative
+        focus:bg-pressed-gray
+      "
       @click="selectAFile(file)"
     >
       <div class="w-full flex justify-start">
         <IconThumbail :url="file.url" :mime-type="file.mimeType" />
-        <div class="p-1">{{ file.name }}</div>
+        <span>{{ file.name }}</span>
       </div>
-      <div>
-        <span v-if="isFileSelected">
-          <i class="fas fa-check-circle text-blue-500"></i>
-        </span>
-      </div>
+
+      <span v-if="isFileSelected" class="icon">
+        <i class="fas fa-check-circle text-blue-500"></i>
+      </span>
     </button>
   </div>
 </template>

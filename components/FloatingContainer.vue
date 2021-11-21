@@ -1,13 +1,13 @@
 <template>
   <div
     v-if="folderStructureViewed"
+    id="floating-container"
     class="
       p-2
       rounded-lg
       bg-white
       shadow
       w-full
-      max-h-80
       flex flex-col
       absolute
       top-0
@@ -127,7 +127,7 @@ export default {
       return this.selectedFolder?.folders
     },
     files() {
-      if (this.selectedFolder.files) {
+      if (this.selectedFolder?.files) {
         return this.selectedFolder.files.filter(
           (file) =>
             file.mimeType === 'application/pdf' ||
