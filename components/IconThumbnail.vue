@@ -5,7 +5,7 @@
         ><i class="far fa-file-pdf"></i
       ></span>
     </div>
-    <div v-else class="w-7 h-7 m-1 overflow-hidden">
+    <div v-else class="overflow-hidden iconImg">
       <img :src="url" alt="file image" class="w-full h-full rounded" />
     </div>
   </div>

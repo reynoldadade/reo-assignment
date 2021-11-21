@@ -5,7 +5,7 @@
         rounded
         py-1
         px-4
-        bg-blue-500
+        bg-selected-blue
         text-white
         disabled:text-gray-400
         disabled:cursor-not-allowed

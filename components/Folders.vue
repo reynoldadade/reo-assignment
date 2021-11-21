@@ -1,16 +1,25 @@
 <template>
-  <div class="w-full p-2">
+  <div class="w-full">
     <button
-      class="w-full p-1 text-left hover:bg-gray-200 flex justify-between"
+      id="folders"
+      class="
+        w-full
+        text-left
+        hover:bg-hover-gray
+        flex
+        justify-between
+        focus:bg-pressed-gray
+        relative
+      "
       @click="selectAFolder(folder)"
     >
       <div>
-        <span class="p-1 bg-gray-100 rounded m-1"
+        <span class="p-1 bg-gray-100 rounded iconImg"
           ><i class="far fa-folder"></i></span
         ><span>{{ folder.name }}</span>
       </div>
 
-      <span><i class="fas fa-chevron-right"></i></span>
+      <span class="icon"><i class="fas fa-chevron-right"></i></span>
     </button>
   </div>
 </template>
