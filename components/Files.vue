@@ -18,7 +18,7 @@
       </div>
 
       <span v-if="isFileSelected" class="icon">
-        <i class="fas fa-check-circle text-blue-500"></i>
+        <i class="fas fa-check-circle text-selected-blue"></i>
       </span>
     </button>
   </div>

@@ -155,4 +155,24 @@ export default {
   width: 28px;
   margin-right: 8px;
 }
+
+.selectButton {
+  border-radius: 4px;
+}
+
+.actionButton {
+  border-radius: 4px;
+  height: 44px;
+  width: 44px;
+}
+
+.selectedFilesButton {
+  width: 98px;
+  height: 32px;
+  border-radius: 4px;
+}
+
+body {
+  font-family: Calibre;
+}
 </style>

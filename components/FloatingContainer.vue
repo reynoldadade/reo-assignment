@@ -16,19 +16,32 @@
     "
   >
     <div class="p-2 font-semibold flex justify-between">
-      <div>
+      <div class="w-full">
         <button
           v-if="folderName"
-          class="p-1 hover:bg-gray-200 rounded-full"
+          class="
+            p-1
+            hover:bg-hover-gray
+            focus:bg-pressed-gray
+            rounded-full
+            actionButton
+          "
           @click="goBackOneLevel"
         >
           <span><i class="fas fa-arrow-left"></i></span>
         </button>
-        {{ folderName ? folderName : 'Torstraße 145, 39481 Nürnberg' }}
+        <span id="currentFile" class="p-2">
+          {{ folderName ? folderName : 'Torstraße 145, 39481 Nürnberg' }}
+        </span>
       </div>
       <div>
         <button
-          class="hover:bg-gray-200 p-1 rounded-full"
+          class="
+            hover:bg-hover-gray
+            focus:bg-pressed-gray
+            rounded-full
+            actionButton
+          "
           @click.prevent="viewFolderStructure(false)"
         >
           <span><i class="fas fa-times"></i></span>
@@ -57,12 +70,12 @@
           px-4
           rounded
           disabled:border disabled:border-gray-100
-          bg-blue-500
+          bg-selected-blue
           text-white
           disabled:text-gray-400
           disabled:cursor-not-allowed
           disabled:opacity-50
-          disabled:bg-gray-100
+          disabled:bg-disabled-gray
         "
         @click="acceptFileSelection(selectedFiles)"
       >
