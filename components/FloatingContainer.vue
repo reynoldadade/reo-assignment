@@ -16,7 +16,7 @@
     "
   >
     <div class="font-semibold flex justify-between">
-      <div class="w-full p-1">
+      <div class="w-full p-1 flex">
         <button
           v-if="folderName"
           class="
@@ -27,9 +27,9 @@
           "
           @click="goBackOneLevel"
         >
-          <span><i class="fas fa-arrow-left"></i></span>
+          <span><a-icon type="arrow-left" /></span>
         </button>
-        <span id="currentFile" class="p-2">
+        <span id="currentFile" class="px-2 pb-2 pt-3">
           {{ folderName ? folderName : 'Torstraße 145, 39481 Nürnberg' }}
         </span>
       </div>
@@ -43,7 +43,7 @@
           "
           @click.prevent="viewFolderStructure(false)"
         >
-          <span><i class="fas fa-times"></i></span>
+          <span><a-icon type="close" /></span>
         </button>
       </div>
     </div>

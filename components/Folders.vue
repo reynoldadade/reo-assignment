@@ -13,13 +13,16 @@
       "
       @click="selectAFolder(folder)"
     >
-      <div>
+      <div class="flex">
         <span class="p-1 bg-gray-100 rounded iconImg"
-          ><i class="far fa-folder"></i></span
-        ><span>{{ folder.name }}</span>
+          ><a-icon type="folder" /></span
+        ><span class="pt-1">{{ folder.name }}</span>
       </div>
 
-      <span class="icon"><i class="fas fa-chevron-right"></i></span>
+      <span class="icon">
+        <!-- <i class="fas fa-chevron-right"></i> -->
+        <a-icon type="right" />
+      </span>
     </button>
   </div>
 </template>

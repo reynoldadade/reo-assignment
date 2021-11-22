@@ -14,7 +14,7 @@
     >
       <div class="w-full flex justify-start">
         <IconThumbail :url="file.url" :mime-type="file.mimeType" />
-        <span>{{ file.name }}</span>
+        <span class="pt-1">{{ file.name }}</span>
       </div>
 
       <span v-if="isFileSelected" class="icon">
