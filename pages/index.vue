@@ -126,10 +126,10 @@ export default {
 </script>
 
 <style>
-@import url('http://fonts.cdnfonts.com/css/calibre');
+/* @import url('http://fonts.cdnfonts.com/css/calibre'); */
 
 #floating-container {
-  max-height: 23.75rem;
+  height: 23.75rem;
   width: 26.25rem;
 }
 
@@ -175,6 +175,11 @@ export default {
 }
 
 /* */
+
+@font-face {
+  font-family: 'Calibre';
+  src: url('/static/Calibre-Regular.otf');
+}
 
 body {
   font-family: 'Calibre', sans-serif;
