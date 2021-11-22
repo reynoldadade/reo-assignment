@@ -184,5 +184,9 @@ export default {
 body {
   font-family: 'Calibre', sans-serif;
   font-size: 16px;
+  font-style: normal;
+  font-weight: normal;
+
+  line-height: 19px;
 }
 </style>
