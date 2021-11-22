@@ -178,7 +178,7 @@ export default {
 
 @font-face {
   font-family: 'Calibre';
-  src: url('/static/Calibre-Regular.otf');
+  src: url('~assets/CalibreRegular.otf');
 }
 
 body {
