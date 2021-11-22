@@ -183,5 +183,6 @@ export default {
 
 body {
   font-family: 'Calibre', sans-serif;
+  font-size: 16px;
 }
 </style>
